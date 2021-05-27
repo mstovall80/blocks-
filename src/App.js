@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React, {useState} from "react";
 import './App.css';
 
+import Form from "./components/Form"
+
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+  const [boxes, setBoxes] = useState([])
+
+
+  return ( <div className="App">
+    <Form boxes={boxes} setBoxes={setBoxes} />
+
+    <div style={{ display:"flex"}}>
+      {boxes.map((color, i) => {
+        return (
+          <div
+          key={i}
+          style={{
+            backgroundColor: color,
+            width: 100, 
+            height: 100, 
+            marginRight: 10 
+          }}
+          ></div>
+        );
+      })}
     </div>
+  </div>
   );
 }
-
 export default App;
